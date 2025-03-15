@@ -109,6 +109,3 @@ Dieses Projekt bietet mir eine praxisnahe Möglichkeit, meine Webentwicklungs-Sk
 
 Dieses Projekt zeigt meinen Lernfortschritt und ist gleichzeitig eine perfekte Grundlage für Bewerbungen im IT-Bereich. Es hilft mir, **praxisnah moderne Webentwicklung zu erlernen und langfristig auf professionelle Frameworks umzusteigen.** 🚀
 
----
-
-**💪 Viel Erfolg bei der Umsetzung!**
