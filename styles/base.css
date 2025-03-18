@@ -1,20 +1,275 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #1e1e1e;
-
+  background-color: #1e1e1e;
+  width: 100%;
+  position: relative;
+  font-family: sans-serif;
+  overflow-x: hidden;
 }
 
 #header {
-    background: url(../assets/img/header_background.webp);
-    background-size: cover;
-    background-position: 50% 75%;
-    object-fit: cover;
-    width: 100%;
-    height: 275px;
+  background: url(../assets/img/header_background.webp);
+  background-size: cover;
+  background-position: 50% 75%;
+  object-fit: cover;
+  width: 100%;
+  height: 275px;
+  position: relative;
+}
 
+#header > h1 {
+  color: #f1d5f7;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  padding: 0 5px;
+  backdrop-filter: sepia(70%);
+  border-radius: 5px;
+}
+
+#navigation {
+  position: fixed;
+  top: 0px;
+  height: 100svh;
+  z-index: 99;
+  display: flex;
+  display: none;
+  visibility: hidden;
+}
+
+#navigation ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  background-color: #1c0f36;
+  width: 320px;
+}
+
+#navigation a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #f1d5f7;
+  font-size: 1.5rem;
+  text-wrap: wrap;
+  padding: 2rem 0;
+  transition: all 0.3s linear;
+}
+#navigation a:hover {
+  color: #d281e4;
+}
+#navigation a > svg {
+  fill: #f1d5f7;
+  height: 3rem;
+  /* width: 50px; */
+}
+
+.status-board {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px){
+.status-board {
+  justify-content: space-evenly;
+}
+}
+
+/* ! ~~~ WEATHER APP ~~~ */
+
+#weather-app {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  width: clamp(320px, 57vw, 40%);
+  color: #f1d5f7;
+  text-align: center;
+  letter-spacing: 1px;
+  column-gap: 2%;
+  /* pointer-events: none; */
+  overflow-x: hidden;
+}
+
+.curr-weather-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: fit-content;
+}
+
+.place-search {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.place-search > svg {
+  position: absolute;
+  left: -20px;
+  width: clamp(0.5rem, 5vw, 1.2rem);
+  fill: #f1d5f7;
+}
+
+.locationInput {
+  display: inline-block;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  background: none;
+  border: none;
+  text-align: center;
+  font-weight: bold;
+  color: #f1d5f7;
+  width: auto;
+  min-width: 3ch;
+  pointer-events: all;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.forecast-day {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: clamp();
+  column-gap: 10%;
+
+  img {
+    margin-bottom: -12px;
+    width: clamp(30px, 5vw, 40px);
+  }
+}
+
+.forecast-condition {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: 10px;
+  height: 60px;
+}
+
+.forecast-weekday,
+h2 {
+  font-size: clamp(0.7rem, 2vw, 1rem);
+}
+.curr-w-temp,
+.forecast-temp {
+  font-size: clamp(0.7rem, 2vw, 1rem);
+}
+.curr-w-icon {
+  width: clamp(30px, 10vw, 50px);
+  margin: -10px 0 -12px 0;
+}
+
+.curr-w-text,
+.forecast-text {
+  font-size: clamp(0.4rem, 3vw, 0.8rem);
+}
+
+/*! ~~~ PROGRESSBARS ~~~ */
+
+#progressBars {
+  color: #f1d5f7;
+  letter-spacing: 1px;
+  margin: 10px;
+  font-weight: bold;
+  width: clamp(300px, 57vw, 40%);
+  font-size: 1rem;
+}
+
+#progressBars > section > div > p {
+ margin-left: 5px;
+}
+
+
+#progressBars > section > div {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+#progressBars > section progress {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 10px;
+  border-radius: 5px;
+  width: 90%;
+}
+
+#progressBarYear {
+  background-color: #f1d5f7;
+}
+#progressBarYear::-webkit-progress-bar {
+  background-color: #f1d5f7;
+  border-radius: 10px;
+}
+
+#progressBarYear::-webkit-progress-value {
+  background-color: #23062c;
+}
+
+#progressBarYear::-moz-progress-bar {
+  background-color: #23062c;
+}
+
+#progressBarMonth {
+  background-color: #f1d5f7;
+}
+
+#progressBarMonth::-webkit-progress-bar {
+  background-color: #f1d5f7;
+  border-radius: 10px;
+}
+
+#progressBarMonth::-webkit-progress-value {
+  background-color: #410b52;
+}
+
+#progressBarMonth::-moz-progress-bar {
+  background-color: #410b52;
+}
+
+#progressBarWeek {
+  background-color: #f1d5f7;
+}
+
+#progressBarWeek::-webkit-progress-bar {
+  background-color: #f1d5f7;
+  border-radius: 10px;
+}
+
+#progressBarWeek::-webkit-progress-value {
+  background-color: #6a1285;
+}
+
+#progressBarWeek::-moz-progress-bar {
+  background-color: #6a1285;
+}
+
+#progressBarDay {
+  background-color: #f1d5f7;
+}
+
+#progressBarDay::-webkit-progress-bar {
+  background-color: #f1d5f7;
+  border-radius: 10px;
+}
+
+#progressBarDay::-webkit-progress-value {
+  background-color: #931ab8;
+}
+#progressBarDay::-moz-progress-bar {
+  background-color: #931ab8;
 }

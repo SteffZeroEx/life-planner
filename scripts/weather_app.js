@@ -6,13 +6,13 @@ const currWeatherIcon = document.querySelector(".curr-w-icon");
 const currWeatherText = document.querySelector(".curr-w-text");
 const forecastDays = document.querySelectorAll(".forecast-day");
 
+const API_Key = "c02ab58f17e84660a7b134735241612";
+
 const defaultLocation = localStorage.getItem("location") || "Standort";
 locationInput.value = defaultLocation;
 
 function getDataCurrent(location) {
-  fetch(
-    `http://api.weatherapi.com/v1/current.json?key=c02ab58f17e84660a7b134735241612&q=${location}&aqi=no&lang=${"de"}`
-  )
+  fetch(`http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=${location}&aqi=no&lang=${"de"}`)
     .then((res) => res.json())
     .then((data) => {
       console.log("Empfangene API-Daten (Current):", data);
@@ -21,9 +21,7 @@ function getDataCurrent(location) {
     .catch((error) => console.error("Fehler beim Abrufen der Wetterdaten:", error));
 }
 function getDataForecast(location) {
-  fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=c02ab58f17e84660a7b134735241612&q=${location}&aqi=no&lang=${"de"}&days=4`
-  )
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_Key}&q=${location}&aqi=no&lang=${"de"}&days=4`)
     .then((res) => res.json())
     .then((data) => replaceDataForecast(data.forecast.forecastday.slice(1)))
     .catch((error) => console.error("Fehler beim Abrufen der Wettervorhersage:", error));
@@ -32,11 +30,11 @@ function getDataForecast(location) {
 function replaceDataCurrent(data) {
   if (!data || !data.current || !data.location) {
     console.error("Fehlerhafte API-Daten erhalten", data);
-     currWeatherIcon.src = "";
-     currWeatherText.textContent = "Daten nicht verfügbar";
-     currWeatherTemp.textContent = "--°C";
-     locationInput.value = "Unbekannt";
-     return;
+    currWeatherIcon.src = "";
+    currWeatherText.textContent = "Daten nicht verfügbar";
+    currWeatherTemp.textContent = "--°C";
+    locationInput.value = "Unbekannt";
+    return;
   }
 
   currWeatherIcon.src = `https:${data.current.condition.icon.replaceAll(64, 128)}`;
@@ -44,7 +42,7 @@ function replaceDataCurrent(data) {
   currWeatherTemp.textContent = `${data.current.temp_c.toFixed()}°C`;
   locationInput.value = data.location.name || "Unbekannter Ort";
 
-   adjustWidth();
+  adjustWidth();
 }
 
 function replaceDataForecast(forecastData) {
@@ -70,6 +68,7 @@ function getWeekday(date) {
 function formatDate(date) {
   return date.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" });
 }
+
 /* 
 Dynamische Anpassung der Breite des Input Feldes ".locationInput"
 */
@@ -81,24 +80,27 @@ function adjustWidth() {
   const textWidth = ctx.measureText(text).width;
   locationInput.style.width = textWidth + "px";
 }
-locationInput.addEventListener("input", adjustWidth);
+function initWeatherApp() {
+  locationInput.addEventListener("input", adjustWidth);
+  locationInput.addEventListener("click", () => {
+    locationInput.value = "";
+  });
 
-
-locationInput.addEventListener("click", (e)=> {
-  locationInput.value = "";
-})
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    const newLocation = locationInput.value.trim();
-    if (newLocation) {
-      localStorage.setItem("location", locationInput.value);
-      getDataCurrent(newLocation);
-      getDataForecast(newLocation);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      const newLocation = locationInput.value.trim();
+      if (newLocation) {
+        localStorage.setItem("location", locationInput.value);
+        getDataCurrent(newLocation);
+        getDataForecast(newLocation);
+      }
+      locationInput.blur();
     }
-    locationInput.blur();
-  }
-});
+  });
 
-adjustWidth();
-getDataCurrent(defaultLocation);
-getDataForecast(defaultLocation);
+  adjustWidth();
+  getDataCurrent(defaultLocation);
+  getDataForecast(defaultLocation);
+}
+
+export { getDataCurrent, getDataForecast, initWeatherApp };
