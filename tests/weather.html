@@ -1,19 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wetter App Test Zone</title>
+    <link rel="stylesheet" href="weather.css" />
+  </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wetter App Test Zone</title>
-        <link rel="stylesheet" href="../styles/base.css">
-    </head>
+  <body>
+    <aside id="weather-app">
+      <div class="curr-weather-ctn">
+        <input class="locationInput" value="Standort" type="text">
+        <h2 class="curr-w-temp">*°C</h2>
+        <div class="curr-w-condition">
+          <img class="curr-w-icon" src="//cdn.weatherapi.com/weather/64x64/day/176.png" alt="Aktuelles Wetter-Bild" />
+          <p class="curr-w-text">sonnig</p>
+        </div>
+      </div>
 
-    <body>
+      <div class="forecast-weather-ctn">
+        <div class="forecast-day">
+          <div>
+            <h1 class="forecast-weekday">Mo</h1>
+            <h2 class="forecast-date">31.02.</h2>
+          </div>
+          <div class="forecast-condition">
+            <h2 class="forecast-temp">0°</h2>
+            <img class="forecast-icon" src="" alt="Vorhersage Wetter-Bild" />
+            <p class="forecast-text">teilweise Regen</p>
+          </div>
+        </div>
+        <div class="forecast-day">
+          <div>
+            <h1 class="forecast-weekday">Di</h1>
+            <h2 class="forecast-date">31.02.</h2>
+          </div>
+          <div class="forecast-condition">
+            <h2 class="forecast-temp">0°</h2>
+            <img class="forecast-icon" src="" alt="Vorhersage Wetter-Bild" />
+            <p class="forecast-text">teilweise Regen</p>
+          </div>
+        </div>
 
-        
+      </div>
+    </aside>
 
-        <script src="../scripts/weather_app.js" defer></script>
-
-    </body>
-
+    <script src="../scripts/weather_app.js" defer></script>
+  </body>
 </html>
