@@ -42,6 +42,6 @@ function updateAllProgressBars() {
 }
 updateAllProgressBars();
 
-setInterval(updateAllProgressBars, 60000);
+setInterval(updateAllProgressBars, 1000);
 
 export {updateAllProgressBars};

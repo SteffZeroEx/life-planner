@@ -3,13 +3,31 @@
   margin: 0;
   box-sizing: border-box;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background-color: #1e1e1e;
+  background-color: #2b1f44;
   width: 100%;
   position: relative;
   font-family: sans-serif;
   overflow-x: hidden;
+  display: flex;
+  height: 2500px;
+}
+main {
+  width: 100%;
+  position: relative;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  margin-left: 255px;
+}
+
+#content {
+  background-color: #1c0f36;
+  margin-top: 10px;
+  border-radius: 5px 0 0 5px;
 }
 
 #header {
@@ -22,53 +40,98 @@ body {
   position: relative;
 }
 
-#header > h1 {
+.headline {
+  position: relative;
+  top: -46px;
   color: #f1d5f7;
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  padding: 0 5px;
+    padding: 0 5px;
   backdrop-filter: sepia(70%);
   border-radius: 5px;
 }
 
 #navigation {
   position: fixed;
-  top: 0px;
+  left: 0;
   height: 100svh;
-  z-index: 99;
   display: flex;
+  background-color: #1c0f36;
+  padding: 50px 0 30px 0;
+  border-radius: 0 5px 5px 0;
+}
+
+#navigation .menue-btn {
+  position: absolute;
+  top: 10px;
+  right: 7.5px;
+  fill: #f1d5f7;
+  height: 40px;
+  width: 40px;
+}
+
+#navigation .menue-btn:hover {
+  cursor: pointer;
+}
+.nav-text-hidden {
   display: none;
   visibility: hidden;
+
+}
+.navigation-min {
+width: 60px;
+
+}
+.mainContent-max {
+    margin-left: 70px;
+      transition: all .3s linear;
 }
 
 #navigation ul {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: flex-start;
-  background-color: #1c0f36;
-  width: 320px;
+  width: 100%;
+  /* padding:30% 0; */
+  color: #f1d5f7;
 }
 
 #navigation a {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-decoration: none;
   color: #f1d5f7;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-wrap: wrap;
-  padding: 2rem 0;
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
 }
 #navigation a:hover {
   color: #d281e4;
+  text-decoration: underline;
 }
 #navigation a > svg {
+width: 35px;
   fill: #f1d5f7;
   height: 3rem;
-  /* width: 50px; */
+  margin: 0 10px;
+  transition: all 0.2s linear;
+}
+#navigation a:hover > svg {
+  fill: #d281e4;
+  filter: drop-shadow(0 0 5px #f1d5f7);
+}
+
+#navigation a span {
+  padding-right: 10px;
+}
+
+.user-dashboard p {
+  padding: 10px 0 10px 15px;
+  font-size: 0.9rem;
+}
+.user-dashboard > .login-name {
+  text-decoration: underline;
+  color: #d281e4;
 }
 
 .status-board {
@@ -79,10 +142,10 @@ body {
   width: 100%;
 }
 
-@media screen and (max-width: 767px){
-.status-board {
-  justify-content: space-evenly;
-}
+@media screen and (max-width: 767px) {
+  .status-board {
+    justify-content: space-evenly;
+  }
 }
 
 /* ! ~~~ WEATHER APP ~~~ */
@@ -189,14 +252,13 @@ h2 {
 }
 
 #progressBars > section > div > p {
- margin-left: 5px;
+  margin-left: 5px;
 }
 
-
 #progressBars > section > div {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 #progressBars > section progress {
